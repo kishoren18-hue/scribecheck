@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trust That Survives Deployment: Shift-Robust Review Guarantees for AI Medical Scribes</title>
+<meta name="description" content="Type-conditional review guarantees and a label-free shift alarm that keep AI-scribe safety guarantees valid when a vendor's error mix changes, plus a verified report card on 1,200 real notes.">
+<meta property="og:title" content="Trust That Survives Deployment: Shift-Robust Review Guarantees for AI Medical Scribes">
+<meta property="og:description" content="Do AI-scribe safety guarantees survive deployment? Not always. Here is one that does, and an alarm that tells you when you need it.">
+<meta property="og:image" content="assets/fig7_mix_robust.png">
+<style>
+  :root { --ink:#16181d; --ink2:#4b4f58; --muted:#7a7f8a; --line:#e6e4de; --bg:#fbfaf7; --card:#ffffff; --accent:#2a78d6; --warn:#c2410c; }
+  @media (prefers-color-scheme: dark) { :root { --ink:#eeede9; --ink2:#c4c2ba; --muted:#9a988f; --line:#33322e; --bg:#171716; --card:#1f1f1d; --accent:#5598e7; --warn:#f08a5d; } img.fig { background:#fcfcfb; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:17px/1.6 Charter, "Iowan Old Style", Georgia, serif; }
+  main { max-width:860px; margin:0 auto; padding:56px 22px 80px; }
+  .kicker { font:600 12px/1 ui-sans-serif, system-ui, -apple-system, sans-serif; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); }
+  h1 { font-size:clamp(28px,4.6vw,42px); line-height:1.15; margin:14px 0 14px; letter-spacing:-.01em; }
+  .author { font:15px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif; color:var(--ink2); margin-bottom:22px; }
+  .buttons { display:flex; flex-wrap:wrap; gap:10px; margin:0 0 36px; }
+  .btn { font:600 14px/1 ui-sans-serif, system-ui, -apple-system, sans-serif; padding:11px 16px; border-radius:999px; border:1px solid var(--line); background:var(--card); color:var(--ink); text-decoration:none; }
+  .btn.primary { background:var(--ink); color:var(--bg); border-color:var(--ink); }
+  .btn:hover { border-color:var(--accent); }
+  h2 { font:700 13px/1 ui-sans-serif, system-ui, -apple-system, sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:52px 0 16px; padding-top:20px; border-top:1px solid var(--line); }
+  p { margin:0 0 16px; }
+  .lede { font-size:20px; line-height:1.55; }
+  .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin:28px 0 8px; }
+  .stat { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 16px 14px; }
+  .stat .n { font:700 30px/1.1 ui-sans-serif, system-ui, -apple-system, sans-serif; letter-spacing:-.02em; }
+  .stat .n.warn { color:var(--warn); }
+  .stat .n.good { color:var(--accent); }
+  .stat .l { font:14px/1.4 ui-sans-serif, system-ui, -apple-system, sans-serif; color:var(--ink2); margin-top:6px; }
+  ol.findings { padding-left:22px; } ol.findings li { margin-bottom:12px; }
+  figure { margin:26px 0; }
+  img.fig { width:100%; border-radius:10px; border:1px solid var(--line); display:block; }
+  figcaption { font:14px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif; color:var(--muted); margin-top:8px; }
+  .tablewrap { overflow-x:auto; border:1px solid var(--line); border-radius:12px; background:var(--card); }
+  table { border-collapse:collapse; width:100%; font:14px/1.4 ui-sans-serif, system-ui, -apple-system, sans-serif; font-variant-numeric:tabular-nums; }
+  th, td { padding:10px 12px; text-align:right; border-bottom:1px solid var(--line); white-space:nowrap; }
+  th:first-child, td:first-child { text-align:left; }
+  thead th { color:var(--muted); font-weight:600; }
+  tr:last-child td { border-bottom:none; }
+  td.bad { color:var(--warn); font-weight:700; }
+  .note { font:14px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif; color:var(--ink2); background:var(--card); border-left:3px solid var(--accent); padding:12px 14px; border-radius:0 10px 10px 0; }
+  pre { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:16px; overflow-x:auto; font:13px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  footer { margin-top:56px; font:13px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif; color:var(--muted); }
+  a { color:var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <div class="kicker">Preprint · November 2026</div>
+  <h1>Trust That Survives Deployment: Shift-Robust Review Guarantees for AI Medical Scribes</h1>
+  <div class="author">Kishore Nuthalapati · Independent researcher</div>
+  <div class="buttons">
+    <a class="btn primary" href="assets/scribecheck_paper.pdf">Read the paper (PDF)</a>
+    <a class="btn" href="https://github.com/kishoren18-hue/scribecheck">Code &amp; data</a>
+    <a class="btn" href="#cite">Cite</a>
+  </div>
+
+  <p class="lede">AI scribes draft clinical notes from doctor–patient conversations, and a clinician is supposed to catch their mistakes. A conformal review gate can tell that clinician which sentences to check, with a guarantee on how many errors slip through. We show that the guarantee quietly breaks when a scribe's mix of errors changes, and we build one that doesn't, plus an alarm that says when you need it.</p>
+
+  <div class="stats">
+    <div class="stat"><div class="n warn">26.5%</div><div class="l">of grounded errors missed by a gate that still meets its 10% target</div></div>
+    <div class="stat"><div class="n warn">97%</div><div class="l">of deployments where a subtle vendor breaks the standard guarantee</div></div>
+    <div class="stat"><div class="n good">≤ 1.6%</div><div class="l">miss rate of type-conditional review in every condition tested</div></div>
+    <div class="stat"><div class="n">15% vs 1.7%</div><div class="l">GPT-4 vs human notes with a verified invented drug, dose or side</div></div>
+  </div>
+
+  <h2>Abstract</h2>
+  <p>Conformal risk control (CRC) can bound the expected share of errors a reviewer never sees, but the bound assumes deployment notes look like calibration notes. A scribe deployment breaks that: vendors update models, microphones change the transcript, hospitals differ. We build <strong>ScribeErr</strong>, 11,996 corrupted notes from ACI-Bench and MTS-Dialog with eleven transcript-aware error types, including <em>grounded</em> errors whose every word was spoken during the visit. We propose <strong>type-conditional review guarantees</strong> that bound misses within each error family, and therefore under any mixture of families, and a <strong>label-free shift alarm</strong> built on bias-corrected label-shift estimation. We also audit 1,200 real notes from ten note writers with verified transcript checks and a transcript-to-note certainty audit.</p>
+
+  <h2>Findings</h2>
+  <ol class="findings">
+    <li><strong>A valid guarantee can hide a blind spot.</strong> In distribution, CRC meets its target (0.098 at α = 0.10) while missing 26.5% of grounded errors, mostly negation flips, and 0.4% of invented ones.</li>
+    <li><strong>Error-mix shift breaks the guarantee; transcript noise doesn't.</strong> A subtle vendor pushes the miss rate to 0.155. ASR noise keeps it valid but raises reviewer workload from 28% to 41% of sentences.</li>
+    <li><strong>Type-conditional guarantees survive any error mix.</strong> The miss rate never exceeded 0.016 across six conditions and 200 resplits. The price is set by the hardest family to detect: 80% workload, almost entirely due to negation flips.</li>
+    <li><strong>A label-free alarm says when to pay that price.</strong> It fires in 94–100% of harder shifts and 4.5% of normal deployments. Switching only when it fires keeps the miss rate ≤ 0.025 under every shift at 30% workload otherwise.</li>
+    <li><strong>Verified report card on real outputs.</strong> Deterministic transcript checks (93% adjudicated precision) find invented drugs, doses or sides in 15% of GPT-4 notes vs 1.7% of human notes; models stated hedged diagnoses as certain where human notes did not (pilot).</li>
+  </ol>
+
+  <figure>
+    <img class="fig" src="assets/fig7_mix_robust.png" alt="Left: reviewer workload against worst-case miss rate for each review gate. Right: how often the label-free alarm fires under each deployment condition.">
+    <figcaption>Left: the price of a guarantee that survives shift. Right: how often the label-free alarm fires under each deployment condition.</figcaption>
+  </figure>
+
+  <h2>Review gates under shift</h2>
+  <p>Mean miss rate / share of sentences sent to the reviewer, α = 0.10, 200 resplits. Red: target violated on average.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Gate</th><th>No shift</th><th>Crude vendor</th><th>ASR 20%</th><th>Subtle vendor</th><th>Subtle + ASR</th><th>New corpus</th></tr></thead>
+    <tbody>
+      <tr><td>CRC (marginal)</td><td>0.100 / 28%</td><td>0.023 / 28%</td><td>0.091 / 32%</td><td class="bad">0.158 / 27%</td><td class="bad">0.138 / 31%</td><td class="bad">0.109 / 36%</td></tr>
+      <tr><td>Trust dial, h = 0.4</td><td>0.030 / 60%</td><td>0.005 / 60%</td><td>0.031 / 62%</td><td>0.044 / 59%</td><td>0.035 / 62%</td><td>0.020 / 69%</td></tr>
+      <tr><td>Type-conditional CRC</td><td>0.015 / 80%</td><td>0.000 / 80%</td><td>0.015 / 81%</td><td>0.016 / 80%</td><td>0.015 / 81%</td><td>0.002 / 84%</td></tr>
+      <tr><td>Alarm-gated</td><td>0.096 / 30%</td><td>0.023 / 29%</td><td>0.017 / 80%</td><td>0.025 / 78%</td><td>0.019 / 80%</td><td>0.002 / 84%</td></tr>
+    </tbody>
+  </table></div>
+
+  <figure>
+    <img class="fig" src="assets/fig3_shift.png" alt="Realized miss rate and reviewer workload of marginal CRC and high-probability CRC across eight deployment conditions.">
+    <figcaption>Marginal CRC under eight deployment conditions: error-mix shift breaks it, transcript noise shifts the cost to reviewer workload.</figcaption>
+  </figure>
+
+  <h2>Report card on real note writers</h2>
+  <p>ACI-Bench released the notes nine systems wrote for the same 120 visits. Every hard-check flag on GPT-4 and human notes was adjudicated against the transcript.</p>
+  <figure>
+    <img class="fig" src="assets/fig1_report_card.png" alt="Verified unsupported drug, dose or side claims per note for each note writer, and the same against drug coverage.">
+    <figcaption>Clean notes are often short notes: the Davinci models produce no flags but record fewer of the visit's drugs.</figcaption>
+  </figure>
+  <p class="note">Examples from GPT-4: a drug named when the patient said only "the medication you prescribed me"; "continue aspirin 81 mg and clopidogrel 75 mg" in a visit that never mentioned antiplatelets; "the high dose of atorvastatin" written as 80 mg; "Left knee is normal" in a right-knee visit.</p>
+
+  <h2>Limitations</h2>
+  <p>Errors in the guarantee experiments are injected, not natural. Adjudications were done against transcripts by the author with AI assistance; clinician labels are the next step, and a blinded labeling kit is included. Type-conditional guarantees rest on a label-shift assumption. Visits are role-played and the real outputs come from 2023-era models. The certainty audit rests on 23 hedged diagnoses.</p>
+
+  <h2 id="cite">Cite</h2>
+<pre>@misc{nuthalapati2026scribecheck,
+  title  = {Trust That Survives Deployment: Shift-Robust Review
+            Guarantees for AI Medical Scribes},
+  author = {Nuthalapati, Kishore},
+  year   = {2026},
+  note   = {Preprint},
+  url    = {https://github.com/kishoren18-hue/scribecheck}
+}</pre>
+
+  <footer>Data: ACI-Bench and MTS-Dialog (CC BY 4.0). Code: MIT. Everything on this page reproduces from <code>run_all.sh</code> on two CPU cores with no API keys.</footer>
+</main>
+</body>
+</html>

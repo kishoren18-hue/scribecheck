@@ -2,7 +2,9 @@
 
 **Trust That Survives Deployment: Shift-Robust Review Guarantees for AI Medical Scribes**
 
-Kishore Nuthalapati · draft, November 2026
+Kishore Nuthalapati · preprint, November 2026
+
+**[Project page](https://kishoren18-hue.github.io/scribecheck/) · [Paper (PDF)](paper/scribecheck_paper.pdf) · [LaTeX source](paper/main.tex)**
 
 ## Abstract
 

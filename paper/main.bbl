@@ -1,0 +1,82 @@
+\begin{thebibliography}{11}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Alexandari et~al.(2020)Alexandari, Kundaje, and
+  Shrikumar]{alexandari2020maximum}
+Amr Alexandari, Anshul Kundaje, and Avanti Shrikumar.
+\newblock Maximum likelihood with bias-corrected calibration is hard-to-beat at
+  label shift adaptation.
+\newblock In \emph{Proceedings of ICML}, 2020.
+
+\bibitem[Angelopoulos et~al.(2022)Angelopoulos, Bates, Fisch, Lei, and
+  Schuster]{angelopoulos2022crc}
+Anastasios~N. Angelopoulos, Stephen Bates, Adam Fisch, Lihua Lei, and Tal
+  Schuster.
+\newblock Conformal risk control.
+\newblock \emph{arXiv preprint arXiv:2208.02814}, 2022.
+
+\bibitem[Bedi et~al.(2026)Bedi, Lin, Zhou, Stanwyck, Jindal, Koyejo, Stutz, and
+  Shah]{bedi2026care}
+Suhana Bedi, Bridget Lin, Anson~Y. Zhou, Chloe~O. Stanwyck, Jenelle~A. Jindal,
+  Sanmi Koyejo, David Stutz, and Nigam~H. Shah.
+\newblock {CARE}: A conformal safety layer for medical summarization.
+\newblock \emph{arXiv preprint arXiv:2606.08969}, 2026.
+
+\bibitem[Bel{\'e}m et~al.(2026)Bel{\'e}m, Wu, Yao, Steyvers, Singh, and
+  Smyth]{belem2026may}
+Catarina Bel{\'e}m, Shang Wu, Randol~H. Yao, Mark Steyvers, Sameer Singh, and
+  Padhraic Smyth.
+\newblock From `may' to `is': Certainty distortion in language model rewriting.
+\newblock In \emph{Advances in Neural Information Processing Systems}, 2026.
+
+\bibitem[Ben~Abacha et~al.(2023)Ben~Abacha, Yim, Fan, and
+  Lin]{benabacha2023mts}
+Asma Ben~Abacha, Wen-wai Yim, Yadan Fan, and Thomas Lin.
+\newblock An empirical study of clinical note generation from doctor-patient
+  encounters.
+\newblock In \emph{Proceedings of EACL}, 2023.
+
+\bibitem[Du et~al.(2026)Du, Lu, and Qu]{du2026possible}
+Hongbo Du, Zixin Lu, and Jiaming Qu.
+\newblock Possible or definite? a benchmark for evaluating diagnostic
+  uncertainty preservation in clinical text.
+\newblock In \emph{Proceedings of the 11th Machine Learning for Healthcare
+  Conference}, volume 340 of \emph{PMLR}, pages 435--460, 2026.
+
+\bibitem[Fox et~al.(2026)Fox, Markham, Lail, and Karotsieris]{fox2026census}
+Sebastian Fox, Luke Markham, Ryan Lail, and Michael Karotsieris.
+\newblock One note in three: a verified census of three deployed {AI} scribes,
+  and the instrument that counted it.
+\newblock \emph{arXiv preprint arXiv:2608.31017}, 2026.
+
+\bibitem[Podkopaev and Ramdas(2021)]{podkopaev2021label}
+Aleksandr Podkopaev and Aaditya Ramdas.
+\newblock Distribution-free uncertainty quantification for classification under
+  label shift.
+\newblock In \emph{Proceedings of UAI}, 2021.
+
+\bibitem[Saerens et~al.(2002)Saerens, Latinne, and
+  Decaestecker]{saerens2002adjusting}
+Marco Saerens, Patrice Latinne, and Christine Decaestecker.
+\newblock Adjusting the outputs of a classifier to new a priori probabilities:
+  A simple procedure.
+\newblock \emph{Neural Computation}, 14\penalty0 (1):\penalty0 21--41, 2002.
+
+\bibitem[Vovk et~al.(2005)Vovk, Gammerman, and Shafer]{vovk2005algorithmic}
+Vladimir Vovk, Alexander Gammerman, and Glenn Shafer.
+\newblock \emph{Algorithmic Learning in a Random World}.
+\newblock Springer, 2005.
+
+\bibitem[Yim et~al.(2023)Yim, Fu, Ben~Abacha, Snider, Lin, and
+  Yetisgen]{yim2023aci}
+Wen-wai Yim, Yujuan Fu, Asma Ben~Abacha, Neal Snider, Thomas Lin, and Meliha
+  Yetisgen.
+\newblock {ACI-BENCH}: a novel ambient clinical intelligence dataset for
+  benchmarking automatic visit note generation.
+\newblock \emph{Scientific Data}, 10, 2023.
+
+\end{thebibliography}
