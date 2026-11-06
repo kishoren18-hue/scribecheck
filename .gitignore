@@ -1,0 +1,4 @@
+data/processed/
+data/raw/
+__pycache__/
+labeling/key_DO_NOT_SHARE.csv
